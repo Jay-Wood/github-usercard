@@ -33,7 +33,6 @@ const followersArray = [];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
-
 <div class="card">
   <img src={image url of user} />
   <div class="card-info">
@@ -47,9 +46,54 @@ const followersArray = [];
     <p>Following: {users following count}</p>
     <p>Bio: {users bio}</p>
   </div>
-</div>
+</div>*/
 
-*/
+const cardsDiv = document.querySelector(".cards")
+console.log("cardsDiv",cardsDiv)
+  
+function createCard(inputObject) {
+  //create elements and add class list
+  const card = document.createElement("div")
+  card.classList.add("card")
+  const cardImg = document.createElement("img")
+  cardImg.classList.add("img")
+  const cardInfo = document.createElement("div")
+  cardInfo.classList.add("card")
+  const cardH3 = document.createElement("h3")
+  cardH3.classList.add("name")
+  const cardUsername = document.createElement("p")
+  cardUsername.classList.add("username")
+  const cardLocation = document.createElement("p")
+  const cardProfile = document.createElement("p")
+  const cardProfileA = document.createElement("a")
+  const cardFollowers = document.createElement("p")
+  const cardFollowing = document.createElement("p")
+  const cardBio = document.createElement("p")
+  
+//append children
+  cardsDiv.appendChild(card)
+  card.appendChild(cardImg)
+  card.appendChild(cardInfo)
+  cardInfo.appendChild(cardH3)
+  cardInfo.appendChild(cardUsername)
+  cardInfo.appendChild(cardLocation)
+  cardInfo.appendChild(cardProfile)
+  cardInfo.appendChild(cardProfileA)
+  cardInfo.appendChild(cardFollowers)
+  cardInfo.appendChild(cardFollowing)
+  cardInfo.appendChild(cardBio)
+
+//set text content
+
+
+console.log("cardsDiv", cardsDiv)
+
+return cardsDiv
+
+} 
+
+createCard(promise)
+
 
 /* List of LS Instructors Github username's: 
   tetondan
