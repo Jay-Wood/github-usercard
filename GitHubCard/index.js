@@ -4,9 +4,11 @@
 */
 
 const promise = axios.get(`https://api.github.com/users/Jay-Wood`)
-  .then(d => {
-    console.log("Github data came through:",d)
+  .then(data => {
+    console.log("Github data came through:",data)
+    createCard(data)
   })
+  .catch({})
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -48,10 +50,8 @@ const followersArray = [];
   </div>
 </div>*/
 
-const cardsTest = document.querySelector(".cards")
-const headerTest = document.querySelector(".header")
-console.log("cardsDiv",cardsTest)
-console.log("headTest",headerTest)
+const cardsDiv = document.querySelector(".cards")
+
   
 function createCard(inputObject) {
   //create elements and add class list
@@ -73,7 +73,7 @@ function createCard(inputObject) {
   const cardBio = document.createElement("p")
   
 //append children
-  // cardsDiv.appendChild(card)
+  cardsDiv.appendChild(card)
   card.appendChild(cardImg)
   card.appendChild(cardInfo)
   cardInfo.appendChild(cardH3)
@@ -87,13 +87,17 @@ function createCard(inputObject) {
 
 //set text content
   cardH3.textContent = "Jay"
-  // cardUsername = data.data.login
+  console.log(inputObject)
+  cardUsername.textContent = inputObject.data.login
+  console.log("cardUN", cardUsername)
+  cardLocation.textContent = inputObject.data.
+
 
 return card
 
 } 
 
-createCard(promise)
+// createCard(promise)
 
 
 /* List of LS Instructors Github username's: 
