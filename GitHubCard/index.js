@@ -4,8 +4,8 @@
 */
 
 const promise = axios.get(`https://api.github.com/users/Jay-Wood`)
-  .then(data => {
-    console.log("worked",data)
+  .then(d => {
+    console.log("Github data came through:",d)
   })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
@@ -48,8 +48,10 @@ const followersArray = [];
   </div>
 </div>*/
 
-const cardsDiv = document.querySelector(".cards")
-console.log("cardsDiv",cardsDiv)
+const cardsTest = document.querySelectorAll(".cards")
+const headerTest = document.querySelector(".header")
+console.log("cardsDiv",cardsTest)
+console.log("headTest",headerTest)
   
 function createCard(inputObject) {
   //create elements and add class list
@@ -71,7 +73,7 @@ function createCard(inputObject) {
   const cardBio = document.createElement("p")
   
 //append children
-  cardsDiv.appendChild(card)
+  // cardsDiv.appendChild(card)
   card.appendChild(cardImg)
   card.appendChild(cardInfo)
   cardInfo.appendChild(cardH3)
@@ -84,11 +86,10 @@ function createCard(inputObject) {
   cardInfo.appendChild(cardBio)
 
 //set text content
+  cardH3.textContent = "Jay"
+  // cardUsername = data.data.login
 
-
-console.log("cardsDiv", cardsDiv)
-
-return cardsDiv
+return card
 
 } 
 
