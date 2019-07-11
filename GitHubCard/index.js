@@ -48,7 +48,7 @@ const followersArray = [];
   </div>
 </div>*/
 
-const cardsTest = document.querySelectorAll(".cards")
+const cardsTest = document.querySelector(".cards")
 const headerTest = document.querySelector(".header")
 console.log("cardsDiv",cardsTest)
 console.log("headTest",headerTest)
