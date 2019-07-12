@@ -3,6 +3,24 @@
            https://api.github.com/users/<your name>
 */
 
+const instructors = [
+  "tetondan",
+  "dustinmyers",
+  "justsml",
+  "luishrd",
+  "bigknell"
+]
+
+instructors.forEach(instructor => {
+  axios.get(`https://api.github.com/users/${instructor}`)
+  .then(res => {
+    createCard(res)
+  })
+  // .catch({
+  //   console.log("Some kinda error occurred")
+  // })
+})
+
 const promise = axios.get(`https://api.github.com/users/Jay-Wood`)
   .then(data => {
     console.log("Github data came through:",data)
@@ -60,17 +78,19 @@ function createCard(inputObject) {
   const cardImg = document.createElement("img")
   cardImg.classList.add("img")
   const cardInfo = document.createElement("div")
-  cardInfo.classList.add("card")
   const cardH3 = document.createElement("h3")
   cardH3.classList.add("name")
   const cardUsername = document.createElement("p")
   cardUsername.classList.add("username")
   const cardLocation = document.createElement("p")
+  // cardLocation.classList.add("p")
   const cardProfile = document.createElement("p")
+  // cardProfile.classList.add("p")
   const cardProfileA = document.createElement("a")
+  // cardProfileA.classList.add = ("p")
   const cardFollowers = document.createElement("p")
   const cardFollowing = document.createElement("p")
-  const cardBio = document.createElement("p")
+  const cardBio = document.createElement("p") 
   
 //append children
   cardsDiv.appendChild(card)
@@ -86,19 +106,19 @@ function createCard(inputObject) {
   cardInfo.appendChild(cardBio)
 
 //set text content
-  cardH3.textContent = "Jay"
+  cardH3.textContent = inputObject.data.name
   console.log(inputObject)
   cardUsername.textContent = inputObject.data.login
   console.log("cardUN", cardUsername)
-  cardLocation.textContent = inputObject.data.
+  cardLocation.textContent = `Location: ${inputObject.data.location}`
+  cardProfile.textContent = `Profile: ${inputObject.data.html_url}`
+  cardBio.textContent = `Bio: ${inputObject.data.bio}` 
+  cardFollowers.textContent = `Followers: ${inputObject.data.followers}`
+  cardFollowing.textContent = `Following: ${inputObject.data.following}`
+  cardImg.src = inputObject.data.avatar_url
 
-
-return card
-
+return cardsDiv;
 } 
-
-// createCard(promise)
-
 
 /* List of LS Instructors Github username's: 
   tetondan
