@@ -16,17 +16,18 @@ instructors.forEach(instructor => {
   .then(res => {
     createCard(res)
   })
-  // .catch({
-  //   console.log("Some kinda error occurred")
-  // })
+  .catch(res => { 
+    console.log(res, "Some kinda error occurred")
+  })
 })
 
 const promise = axios.get(`https://api.github.com/users/Jay-Wood`)
   .then(data => {
-    console.log("Github data came through:",data)
     createCard(data)
   })
-  .catch({})
+  .catch(res => { 
+    console.log("An error occurred",res)
+  })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -107,12 +108,10 @@ function createCard(inputObject) {
 
 //set text content
   cardH3.textContent = inputObject.data.name
-  console.log(inputObject)
   cardUsername.textContent = inputObject.data.login
-  console.log("cardUN", cardUsername)
-  cardLocation.textContent = `Location: ${inputObject.data.location}`
+  cardLocation.textContent = `Location: ${inputObject.data.location || "None"}`
   cardProfile.textContent = `Profile: ${inputObject.data.html_url}`
-  cardBio.textContent = `Bio: ${inputObject.data.bio}` 
+  cardBio.textContent = `Bio: ${inputObject.data.bio || "None"}` 
   cardFollowers.textContent = `Followers: ${inputObject.data.followers}`
   cardFollowing.textContent = `Following: ${inputObject.data.following}`
   cardImg.src = inputObject.data.avatar_url
